@@ -597,11 +597,9 @@
               var link = compile ? compile.apply(this, arguments): false;
               return function(scope) {
                 var linkArgs = arguments;
-                $timeout(function () {
-                  if (link) {
-                    link.apply(this, linkArgs);
-                  }
-                });
+                if (link) {
+                  link.apply(this, linkArgs);
+                }
                 $rootScope.$broadcast('$directiveAdd', directive, scope);
               };
             };
